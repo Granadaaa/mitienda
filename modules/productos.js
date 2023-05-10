@@ -24,16 +24,23 @@ producto.get("/productos", (req, res) => {
     }
   });
 });
-/*
+
 //verbo POST insertar
 
-producto.post("/api/users", (req, res) => {
+producto.post("/productos", (req, res) => {
   let data = {
-    name: req.body.name,
-    lastName: req.body.lastName,
-    phone: req.body.phone,
+    nombre: req.body.nombre,
+    descripcion: req.body.descripcion,
+    imagen: req.body.imagen,
+    imagenes: req.body.imagenes,
+    marca: req.body.marca,
+    precio: req.body.precio,
+    stock: req.body.stock,
+    calificacion: req.body.calificacion,
+    estado: req.body.estado,
+    fechaCreacion: req.body.fechaCreacion,
   };
-  conex.query("Insert into users set ?", data, (error, respuesta) => {
+  conex.query("Insert into producto set ?", data, (error, respuesta) => {
     if (error) {
       console.log(`${error}`);
     } else {
@@ -44,15 +51,22 @@ producto.post("/api/users", (req, res) => {
 
 //verbo Put Editar
 
-ruta.put("/api/users/:id", (req, res) => {
+producto.put("/productos/:id", (req, res) => {
   let id = req.params.id;
   let datos = {
-    name: req.body.name,
-    lastName: req.body.lastName,
-    phone: req.body.phone,
+    nombre: req.body.nombre,
+    descripcion: req.body.descripcion,
+    imagen: req.body.imagen,
+    imagenes: req.body.imagenes,
+    marca: req.body.marca,
+    precio: req.body.precio,
+    stock: req.body.stock,
+    calificacion: req.body.calificacion,
+    estado: req.body.estado,
+    fechaCreacion: req.body.fechaCreacion,
   };
   conex.query(
-    "update users set ? where id = ?",
+    "update producto set ? where idProducto = ?",
     [datos, id],
     (error, respuesta) => {
       if (error) {
@@ -64,15 +78,21 @@ ruta.put("/api/users/:id", (req, res) => {
   );
 });
 
-ruta.delete("/api/users/:id", (req, res) => {
+//verbo delete eliminar
+
+producto.delete("/productos/:id", (req, res) => {
   let id = req.params.id;
-  conex.query("delete from users where id = ?", id, (error, respuesta) => {
-    if (error) {
-      console.log(`${error}`);
-    } else {
-      res.status(201).send(respuesta);
+  conex.query(
+    "delete from producto where idProducto = ?",
+    id,
+    (error, respuesta) => {
+      if (error) {
+        console.log(`${error}`);
+      } else {
+        res.status(201).send(respuesta);
+      }
     }
-  });
+  );
 });
- */
+
 module.exports = producto;

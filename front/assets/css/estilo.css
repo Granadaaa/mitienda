@@ -1,0 +1,12 @@
+#nav2 {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(103, 103, 103);
+  font-size: medium;
+  box-shadow: 3px grey;
+}
+
+#nav2 a {
+  text-decoration: none;
+  color: black;
+}

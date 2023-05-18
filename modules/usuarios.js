@@ -62,11 +62,12 @@ usuario.post("/usuarios", async (req, res) => {
 
     conex.query("insert into usuario set ?", [data], (error, respuesta) => {
       console.log(respuesta);
-      res.send("Insercion exitosa");
+      res.send(true);
       //res.sendStatus(200);
     });
   } catch (error) {
     console.log(error);
+    res.send(false);
     //res.send.status(404).error;
   }
 });
@@ -89,15 +90,15 @@ usuario.post("/login", async (req, res) => {
             respuesta.length == 0 ||
             !(await bcrypt.compare(password, respuesta[0].password))
           ) {
-            console.log(
-              "el usuario y/o clave ingresada no existen en la aplicacion"
-            );
+            /*res.send({
+              estado: true,
+              valor: 100,
+            }); */
+            //res.sendStatus(400)
+            res.send(false);
           } else {
             //Enviamos las variables al frontend para que cargue la pagina
-            console.log(
-              "Bienvenido al sistema de informacion" + respuesta[0].email,
-              respuesta[0].password
-            );
+            res.send(true);
           }
         }
       );
